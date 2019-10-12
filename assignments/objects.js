@@ -112,26 +112,69 @@ objectAnswers.push(antonietta.multiplyNums(3,4));
 
 // ==== Stretch Challenge: Nested Objects and the this keyword ==== 
 
-// 1. Create a parent object with properties for name and age.  Make the name Susan and the age 70.
-// 2. Nest a child object in the parent object with name and age as well.  The name will be George and the age will be 50.
-// 3. Nest a grandchild object in the child object with properties for name and age.  The name will be Sam and the age will be 30
-// 4. Give each of the objects the ability to speak their names using the this keyword.
+// 1. Create a parent object with properties for name and age.  
+// Make the name Susan and the age 70.
+// 2. Nest a child object in the parent object with name and age as well.  
+// The name will be George and the age will be 50.
+// 3. Nest a grandchild object in the child object with properties for name and 
+// age.  The name will be Sam and the age will be 30
+// 4. Give each of the objects the ability to speak their names using the this 
+// keyword.
 
-const parent = {}
+const parent = {
+  name: "Susan",
+  age: 70,
+  child: {
+    name: "George",
+    age: 50,
+    speak: function() {
+      console.log(`${this.name}`);
+      return `${this.name}`; //(Not necessary for a console.log, but for my answers array to output something useful.)
+    },
+    child: {
+      name: "Sam",
+      age: 30,
+      speak: function() {
+        console.log(`${this.name}`);
+        return `${this.name}`; //(Not necessary for a console.log, but for my answers array to output something useful.)
+      },
+    }
+  },
+  speak: function() {
+    console.log(`${this.name}`);
+    return `${this.name}`; //(Not necessary for a console.log, but for my answers array to output something useful.)
+  }
+}
 
 // Log the parent object's name
+console.log(parent.name);
+objectAnswers.push(parent.name);
 
 // Log the child's age
+console.log(parent.child.age);
+objectAnswers.push(parent.child.age);
 
 // Log the name and age of the grandchild
+console.log(parent.child.child.name);
+objectAnswers.push(parent.child.child.name);
+
+console.log(parent.child.child.age);
+objectAnswers.push(parent.child.child.age);
 
 // Have the parent speak
+parent.speak();
+objectAnswers.push(`The parent says: ${parent.speak()}`);
 
 // Have the child speak
+parent.child.speak();
+objectAnswers.push(`The child says: ${parent.child.speak()}`);
 
 // Have the grandchild speak
+parent.child.child.speak();
+objectAnswers.push(`The grandchild says: ${parent.child.child.speak()}`);
 
-console.log(objectAnswers);
+
+//console.log(objectAnswers);
 function showObjectAnswers() {
   let answerSpace = document.getElementById("objectSection");
   answerSpace.innerHTML += "<br /><p><strong>Object Section:</strong> </p>";
