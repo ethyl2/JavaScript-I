@@ -45,17 +45,13 @@ exampleArray = [1,2,3,4];
 // });
 
 // This function triples the numbers of whatever array it's passed.
-const triple = (array) => {
-    return array.map((num) => num * 3);
-}
+const triple = array => array.map(num => num * 3);
 console.log(triple(exampleArray));
 conversionAnswers.push(triple);
 
 //If you wanted triple() to be specific to exampleArray, see below:
 // (I don't think that's the intention, but just in case, here it is.)
-const tripleSpecific = () => {
-    return exampleArray.map((num) => num * 3);
-}
+const tripleSpecific = () => exampleArray.map(num => num * 3);
 console.log(tripleSpecific());
 
 //console.log(conversionAnswers);
