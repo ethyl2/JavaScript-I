@@ -21,6 +21,8 @@ const example = {
   gender: "F",
 }
 
+const objectAnswers = [];
+
 // Write your intern objects here:
 // 1, mmelloy0@psu.edu, Mitzi, F
 const mitzi = {
@@ -63,25 +65,48 @@ const antonietta = {
 }
 
 // ==== Challenge 2: Reading Object Data ==== 
-// Once your objects are created, log out the following requests from HR into the console:
+// Once your objects are created, log out the following requests from 
+// HR into the console:
 
 // Mitzi's name
 console.log(mitzi.name);
+objectAnswers.push(mitzi.name);
 
 // Kennan's ID
+console.log(kennan.id);
+objectAnswers.push(kennan.id);
 
 // Keven's email
+console.log(keven.email);
+objectAnswers.push(keven.email);
 
 // Gannie's name
+console.log(gannie.name);
+objectAnswers.push(gannie.name);
 
 // Antonietta's Gender
+console.log(antonietta.gender);
+objectAnswers.push(antonietta.gender);
 
 // ==== Challenge 3: Object Methods ==== 
-// Give Kennan the ability to say "Hello, my name is Kennan!" Use the console.log provided as a hint.
+// Give Kennan the ability to say "Hello, my name is Kennan!" Use the 
+// console.log provided as a hint.
 // console.log(kennan.speak());
+kennan.speak = function() {
+  return "Hello, my name is Kennan!";
+}
+console.log(kennan.speak());
+objectAnswers.push(kennan.speak());
 
-// Antonietta loves math, give her the ability to multiply two numbers together and return the product. Use the console.log provided as a hint.
+// Antonietta loves math, give her the ability to multiply two numbers 
+// together and return the product. Use the console.log provided as a hint.
 //console.log(antonietta.multiplyNums(3,4));
+
+antonietta.multiplyNums = function(num1, num2) {
+  return num1 * num2;
+}
+console.log(antonietta.multiplyNums(3,4));
+objectAnswers.push(antonietta.multiplyNums(3,4));
 
 // === Great work! === Head over to the the arrays.js. You may come back and attempt the Stretch Challenge once you have completed the challenges in arrays.js and function-conversion.js.
 
@@ -105,3 +130,13 @@ const parent = {}
 // Have the child speak
 
 // Have the grandchild speak
+
+console.log(objectAnswers);
+function showObjectAnswers() {
+  let answerSpace = document.getElementById("objectSection");
+  answerSpace.innerHTML += "<br /><p><strong>Object Section:</strong> </p>";
+  for (let i=0; i<objectAnswers.length; i++) {
+    answerSpace.innerHTML += objectAnswers[i] + "<br \><br \>";
+  }
+  return true;
+}

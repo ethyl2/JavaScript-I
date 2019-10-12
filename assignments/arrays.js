@@ -159,9 +159,9 @@ for (let i=0; i<inventory.length; i++) {
 console.log(JSON.stringify(BMWAndAudi));
 challenges.push("BMW and Audi cars in inventory: " + JSON.stringify(BMWAndAudi))
 
-function showAnswers() {
-  let answerSpace = document.getElementsByTagName("P")[0];
-  answerSpace.innerHTML += "<br /><br /><p><strong>Arrays Section:</strong> </p>";
+function showArrayAnswers() {
+  let answerSpace = document.getElementById("arraySection");
+  answerSpace.innerHTML += "<br /><p><strong>Arrays Section:</strong> </p>";
   for (let i=0; i<challenges.length; i++) {
     answerSpace.innerHTML += challenges[i] + "<br \><br \>";
   }
