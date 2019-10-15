@@ -1,6 +1,8 @@
-// To help us use arrays with real world problems we are going to simulate a used car dealer that has 50 cars in their inventory.
+// To help us use arrays with real world problems we are going to simulate a 
+//used car dealer that has 50 cars in their inventory.
 
-// The car dealer has all of their inventory housed in the array seen below.  Scroll down past the data to find out how you can help the car dealer.
+// The car dealer has all of their inventory housed in the array seen 
+//below.  Scroll down past the data to find out how you can help the car dealer.
 
 let inventory = [
   { id: 1, car_make: "Lincoln", car_model: "Navigator", car_year: 2009 },
@@ -73,32 +75,134 @@ let inventory = [
 // console.log(evens);
 // [12, 14]
 
+const challenges = [];
+
 // ==== Challenge 1 ====
-// The dealer can't recall the information for a car with an id of 33 on his lot. Help the dealer find out which car has an id of 33 by logging the car's year, make, and model in the console log provided to you below:
-console.log(`Car 33 is a *car year goes here* *car make goes here* *car model goes here*`);
+// The dealer can't recall the information for a car with an id of 33 on 
+//his lot. Help the dealer find out which car has an id of 33 by logging the 
+//car's year, make, and model in the console log provided to you below:
+let car33 = {};
+for (let i=0; i<inventory.length; i++) {
+  if (inventory[i].id === 33) {
+    car33.year = inventory[i].car_year;
+    car33.make = inventory[i].car_make;
+    car33.model = inventory[i].car_model;
+  }
+}
+const arrayChallenge1 = `Car 33 is a ${car33.year} ${car33.make} ${car33.model}. `;
+console.log(arrayChallenge1);
+challenges.push(arrayChallenge1);
+
+// Stretch with .filter()
+
+let result = inventory.filter((car) => car.id === 33)[0];
+console.log(`Once again, car 33 is a ${result.car_year} ${result.car_make} ${result.car_model}.`);
+challenges.push(`Once again, car 33 is a ${result.car_year} ${result.car_make} ${result.car_model}.`);
+
 
 // ==== Challenge 2 ====
-// The dealer needs the information on the last car in their inventory.  What is the make and model of the last car in the inventory?  Log the make and model into the console.
-let lastCar = 0;
-console.log();
+// The dealer needs the information on the last car in their inventory.  
+// What is the make and model of the last car in the inventory?  
+// Log the make and model into the console.
+let lastCar = inventory[inventory.length -1];
+const arrayChallenge2 = `The last car in the inventory is a ${lastCar.car_make} ${lastCar.car_model}.`;
+console.log(arrayChallenge2);
+challenges.push(arrayChallenge2);
+
+// Stretch with .filter() (It's not more concise than the original version of challenge 2, but here it is anyway.)
+let lastResult = inventory.filter((car) => car.id === inventory.length)[0];
+console.log(`Once again, the last car in the inventory is a ${lastResult.car_make} ${lastResult.car_model}.`);
+challenges.push(`Once again, the last car in the inventory is a ${lastResult.car_make} ${lastResult.car_model}.`)
 
 // ==== Challenge 3 ====
-// The marketing team wants the car models listed alphabetically on the website. Sort all the car model names into alphabetical order and log the results in the console
+// The marketing team wants the car models listed alphabetically on the website. 
+// Sort all the car model names into alphabetical order and log the results in 
+// the console
+
 let carModels = [];
-let carModelsSorted = [];
-console.log();
+for (let i=0; i<inventory.length; i++) {
+  carModels.push(inventory[i].car_model);
+}
+carModels.sort();
+let carModelsSorted = carModels; // It's not necessary to make another variable here, but I'll leave it since it was in the project.
+console.log(carModelsSorted);
+challenges.push("Car names sorted alphabetically: " + carModelsSorted);
+
+
+// Stretch challenge using .map()
+
+let resultModels = inventory.map(car => car.car_model).sort();
+
+console.log(resultModels);
+challenges.push(`And here they are again: ${resultModels}`);
+
 
 // ==== Challenge 4 ====
-// The accounting team needs all the years from every car on the lot. Create a new array from the dealer data containing only the car years and log the result in the console.
+// The accounting team needs all the years from every car on the lot. 
+// Create a new array from the dealer data containing only the car years 
+// and log the result in the console.
 let carYears = [];
-console.log();
+for (let i=0; i<inventory.length; i++) {
+  carYears.push(inventory[i].car_year);
+}
+console.log(carYears);
+challenges.push("All the car years: " + carYears);
+
+// Stretch using .map()
+
+let resultYears = inventory.map((car) => car.car_year);
+console.log(resultYears);
+challenges.push(`One more time: ${resultYears}`);
 
 // ==== Challenge 5 ====
-// The car lot manager needs to find out how many cars are older than the year 2000. Using the carYears array you just created, find out how many cars were made before the year 2000 by populating the array oldCars and logging it's length.
+// The car lot manager needs to find out how many cars are older than the year 
+//2000. Using the carYears array you just created, find out how many cars were 
+//made before the year 2000 by populating the array oldCars and 
+//logging its length.
+
 let oldCars = [];
-console.log();
+for (let i=0; i<carYears.length; i++) {
+  if (carYears[i]  < 2000) {
+    oldCars.push(inventory[i]);
+  }
+}
+console.log(oldCars.length);
+challenges.push("The number of cars made before 2000: " + oldCars.length);
+
+// Stretch using .filter()
+
+let numFilteredCars = carYears.filter((car) => car < 2000).length;
+console.log(numFilteredCars);
+challenges.push(`Once more, there are ${numFilteredCars} old cars.`);
+
 
 // ==== Challenge 6 ====
-// A buyer is interested in seeing only BMW and Audi cars within the inventory. Return an array that only contains BMW and Audi cars.  Once you have populated the BMWAndAudi array, use JSON.stringify() to show the results of the array in the console.
+// A buyer is interested in seeing only BMW and Audi cars within the inventory. 
+// Return an array that only contains BMW and Audi cars.  
+//Once you have populated the BMWAndAudi array, use JSON.stringify() to 
+// show the results of the array in the console.
 let BMWAndAudi = [];
-console.log();
+for (let i=0; i<inventory.length; i++) {
+  if (inventory[i].car_make === "BMW" || inventory[i].car_make ==="Audi"){
+    BMWAndAudi.push(inventory[i]);
+  }
+}
+
+console.log(JSON.stringify(BMWAndAudi));
+challenges.push("BMW and Audi cars in inventory: " + JSON.stringify(BMWAndAudi))
+
+// Stretch with .filter() 
+console.log(JSON.stringify(inventory.filter((car) => (car.car_make === "BMW" || car.car_make ==="Audi"))));
+challenges.push(JSON.stringify(inventory.filter((car) => (car.car_make === "BMW" || car.car_make ==="Audi"))));
+
+
+// Function to show answers in index.html
+
+function showArrayAnswers() {
+  let answerSpace = document.getElementById("arraySection");
+  answerSpace.innerHTML += "<br /><p><strong>Arrays Section:</strong> </p>";
+  for (let i=0; i<challenges.length; i++) {
+    answerSpace.innerHTML += challenges[i] + "<br \><br \>";
+  }
+  return true;
+}

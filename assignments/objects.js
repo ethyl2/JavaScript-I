@@ -1,7 +1,11 @@
-// Let's get some practice writing a few objects for a new group of interns at a small business.
+
+// Let's get some practice writing a few objects for a new group of interns 
+//at a small business.
 
 // ==== Challenge 1: Writing Objects ==== 
-// HR needs some information on the new interns put into a database.  Given an id, email, first name, and gender. Create an object for each person in the company list:
+// HR needs some information on the new interns put into a database.  
+// Given an id, email, first name, and gender. Create an object for each 
+//person in the company list:
 
 // 1, mmelloy0@psu.edu, Mitzi, F
 // 2, kdiben1@tinypic.com, Kennan, M
@@ -17,48 +21,165 @@ const example = {
   gender: "F",
 }
 
-// Write your intern objects here:
+const objectAnswers = [];
 
+// Write your intern objects here:
+// 1, mmelloy0@psu.edu, Mitzi, F
+const mitzi = {
+  id: 1,
+  name: "Mitzi",
+  email: "mmelloy0@psu.edu",
+  gender: "F",
+}
+
+// 2, kdiben1@tinypic.com, Kennan, M
+const kennan = {
+  id: 2,
+  name: "Kennan",
+  email: "kdiben1@tinypic.com",
+  gender: "M",
+}
+
+// 3, kmummery2@wikimedia.org, Keven, M
+const keven = {
+  id: 3,
+  name: "Keven",
+  email: "kmummery2@wikimedia.org",
+  gender: "M",
+}
+
+// 4, gmartinson3@illinois.edu, Gannie, M
+const gannie = {
+  id: 4,
+  name: "Gannie",
+  email: "gmartinson3@illinois.edu",
+  gender: "F",
+}
+
+// 5, adaine5@samsung.com, Antonietta, F
+const antonietta = {
+  id: 5,
+  name: "Antonietta",
+  email: "adaine5@samsung.com",
+  gender: "F",
+}
 
 // ==== Challenge 2: Reading Object Data ==== 
-// Once your objects are created, log out the following requests from HR into the console:
+// Once your objects are created, log out the following requests from 
+// HR into the console:
 
 // Mitzi's name
+console.log(mitzi.name);
+objectAnswers.push(mitzi.name);
 
 // Kennan's ID
+console.log(kennan.id);
+objectAnswers.push(kennan.id);
 
 // Keven's email
+console.log(keven.email);
+objectAnswers.push(keven.email);
 
 // Gannie's name
+console.log(gannie.name);
+objectAnswers.push(gannie.name);
 
 // Antonietta's Gender
+console.log(antonietta.gender);
+objectAnswers.push(antonietta.gender);
 
 // ==== Challenge 3: Object Methods ==== 
-// Give Kennan the ability to say "Hello, my name is Kennan!" Use the console.log provided as a hint.
+// Give Kennan the ability to say "Hello, my name is Kennan!" Use the 
+// console.log provided as a hint.
 // console.log(kennan.speak());
+kennan.speak = function() {
+  return "Hello, my name is Kennan!";
+}
+console.log(kennan.speak());
+objectAnswers.push(kennan.speak());
 
-// Antonietta loves math, give her the ability to multiply two numbers together and return the product. Use the console.log provided as a hint.
+// Antonietta loves math, give her the ability to multiply two numbers 
+// together and return the product. Use the console.log provided as a hint.
 //console.log(antonietta.multiplyNums(3,4));
+
+antonietta.multiplyNums = function(num1, num2) {
+  return num1 * num2;
+}
+console.log(antonietta.multiplyNums(3,4));
+objectAnswers.push(antonietta.multiplyNums(3,4));
 
 // === Great work! === Head over to the the arrays.js. You may come back and attempt the Stretch Challenge once you have completed the challenges in arrays.js and function-conversion.js.
 
 // ==== Stretch Challenge: Nested Objects and the this keyword ==== 
 
-// 1. Create a parent object with properties for name and age.  Make the name Susan and the age 70.
-// 2. Nest a child object in the parent object with name and age as well.  The name will be George and the age will be 50.
-// 3. Nest a grandchild object in the child object with properties for name and age.  The name will be Sam and the age will be 30
-// 4. Give each of the objects the ability to speak their names using the this keyword.
+// 1. Create a parent object with properties for name and age.  
+// Make the name Susan and the age 70.
+// 2. Nest a child object in the parent object with name and age as well.  
+// The name will be George and the age will be 50.
+// 3. Nest a grandchild object in the child object with properties for name and 
+// age.  The name will be Sam and the age will be 30
+// 4. Give each of the objects the ability to speak their names using the this 
+// keyword.
 
-const parent = {}
+const parent = {
+  name: "Susan",
+  age: 70,
+  child: {
+    name: "George",
+    age: 50,
+    speak: function() {
+      console.log(`${this.name}`);
+      return `${this.name}`; //(Not necessary for a console.log, but for my answers array to output something useful.)
+    },
+    child: {
+      name: "Sam",
+      age: 30,
+      speak: function() {
+        console.log(`${this.name}`);
+        return `${this.name}`; //(Not necessary for a console.log, but for my answers array to output something useful.)
+      },
+    }
+  },
+  speak: function() {
+    console.log(`${this.name}`);
+    return `${this.name}`; //(Not necessary for a console.log, but for my answers array to output something useful.)
+  }
+}
 
 // Log the parent object's name
+console.log(parent.name);
+objectAnswers.push(parent.name);
 
 // Log the child's age
+console.log(parent.child.age);
+objectAnswers.push(parent.child.age);
 
 // Log the name and age of the grandchild
+console.log(parent.child.child.name);
+objectAnswers.push(parent.child.child.name);
+
+console.log(parent.child.child.age);
+objectAnswers.push(parent.child.child.age);
 
 // Have the parent speak
+parent.speak();
+objectAnswers.push(`The parent says: ${parent.speak()}`);
 
 // Have the child speak
+parent.child.speak();
+objectAnswers.push(`The child says: ${parent.child.speak()}`);
 
 // Have the grandchild speak
+parent.child.child.speak();
+objectAnswers.push(`The grandchild says: ${parent.child.child.speak()}`);
+
+
+//console.log(objectAnswers);
+function showObjectAnswers() {
+  let answerSpace = document.getElementById("objectSection");
+  answerSpace.innerHTML += "<br /><p><strong>Object Section:</strong> </p>";
+  for (let i=0; i<objectAnswers.length; i++) {
+    answerSpace.innerHTML += objectAnswers[i] + "<br \><br \>";
+  }
+  return true;
+}
